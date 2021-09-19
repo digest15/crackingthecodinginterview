@@ -28,6 +28,8 @@ class Test_3_4 {
         for (Integer origin : originQueue) {
             assertEquals(origin, myQueue.remove());
         }
+
+        assertTrue(myQueue.isEmpty(), "MyQueue must be empty");
     }
 
     @Test
