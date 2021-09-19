@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class test {
+class Test_3_6 {
     @Test
     @DisplayName("Test should gets animals by queue")
     void testShouldGetsAnimalsByQueue() {

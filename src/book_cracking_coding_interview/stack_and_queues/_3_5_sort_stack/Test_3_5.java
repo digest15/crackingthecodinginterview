@@ -8,8 +8,8 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class test {
-    @Test
+class Test_3_5 {
+    @org.junit.jupiter.api.Test
     @DisplayName("Test should get sorted stack")
     void testShouldGetSortedStack() {
         Deque<Integer> stack = new LinkedList<>();
