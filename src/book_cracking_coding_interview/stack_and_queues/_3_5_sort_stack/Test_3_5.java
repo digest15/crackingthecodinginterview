@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Test_3_5 {
-    @org.junit.jupiter.api.Test
+    @Test
     @DisplayName("Test should get sorted stack")
     void testShouldGetSortedStack() {
         Deque<Integer> stack = new LinkedList<>();
@@ -19,11 +19,11 @@ class Test_3_5 {
         stack.push(18);
         stack.push(13);
 
-        Solution.sort(stack);
+        SortStack.sort(stack);
 
         int buf = stack.pop();
         while (!stack.isEmpty()) {
-            if (buf > stack.peek()) {
+            if (buf < ((int) stack.peek())) {
                 fail("Don't correct sort stack");
             }
             buf = stack.pop();
