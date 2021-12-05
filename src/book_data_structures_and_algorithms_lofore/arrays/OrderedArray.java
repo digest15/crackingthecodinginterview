@@ -136,6 +136,36 @@ public class OrderedArray<T extends Comparable<T>> {
     }
 
     /**
+     * Adds to current container from parameter
+     *
+     * @param  a is a container of the same type
+     * @throws NullPointerException – if param is null
+     */
+    @SuppressWarnings("uncheked")
+    public void merge(OrderedArray<? extends T> a) {
+        int newSize = count + a.count;
+        Object[] newArray = new Object[newSize];
+
+        OrderedArray one = count < a.count ? this : a;
+        OrderedArray two = count > a.count ? this : a;
+
+        int i = 0, j = 0;
+        for (int g = 0; g < newSize; g++){
+            if ((j >= two.count - 1) | (i < one.count && one.get(i).compareTo(two.get(j)) < 0)) {
+                newArray[g] = one.get(i);
+                i++;
+            }else {
+                newArray[g] = two.get(j);
+                j++;
+            }
+        }
+
+        array = newArray;
+        size = newSize;
+        count = size - 1;
+    }
+
+    /**
      * Returns index of element.
      * It is due to return -1 if container doesn't contain this value.
      *

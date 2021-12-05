@@ -96,7 +96,7 @@ class OrderedArrayTest {
         Integer two = orderedArray.get(sizeArray / 2);
         Integer three = orderedArray.get(sizeArray - 1);
 
-        assertTrue(one < two && two < three);
+        assertTrue(one <= two && two <= three);
     }
 
     @Test
@@ -109,5 +109,25 @@ class OrderedArrayTest {
         orderedArray.remove(Math.abs(random.nextInt() % orderedArray.size()));
 
         assertEquals(size - 2, orderedArray.size());
+    }
+
+    @Test
+    @DisplayName("Test should merge two ordered containers")
+    void testShouldMergeTwoOrderedContainers() {
+        OrderedArray<Integer> oneArray = new OrderedArray<>(testList);
+        OrderedArray<Integer> twoArray = new OrderedArray<>(size / 2);
+        testList.stream()
+                .limit(size / 2)
+                .forEach(twoArray::add);
+
+        oneArray.merge(twoArray);
+
+        int sizeArray = oneArray.size();
+        Integer one = oneArray.get(0);
+        Integer two = oneArray.get(sizeArray / 2);
+        Integer three = oneArray.get(sizeArray - 1);
+
+        assertTrue(one <= two && two <= three);
+        assertEquals(size + sizeArray / 2, oneArray.size() + twoArray.size() - 2);
     }
 }
