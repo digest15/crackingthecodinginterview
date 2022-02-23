@@ -142,6 +142,10 @@ public class ArrayQueue<T>  implements Iterable<T>{
 
         @Override
         public T next() {
+            if (nItems == 0) {
+                throw new NoSuchElementException();
+            }
+
             @SuppressWarnings("uncheked")
             T temp = (T) queArray[front++];
             if (front == maxSize) {
