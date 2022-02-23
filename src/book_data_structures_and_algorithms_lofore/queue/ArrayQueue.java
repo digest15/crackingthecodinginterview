@@ -1,9 +1,6 @@
 package book_data_structures_and_algorithms_lofore.queue;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Cyclic array implementation of queue
@@ -124,6 +121,14 @@ public class ArrayQueue<T>  implements Iterable<T>{
     @Override
     public Iterator<T> iterator() {
         return new Itr();
+    }
+
+    @Override
+    public String toString() {
+        StringJoiner sj = new StringJoiner(",");
+        forEach(e -> sj.add(e.toString()));
+
+        return "[" + sj.toString() + "]";
     }
 
     private class Itr implements Iterator<T> {
